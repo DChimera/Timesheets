@@ -1,0 +1,20 @@
+﻿@model TimesheetViewModel
+@{
+    ViewData["Title"] = Model.ActiveTimesheet.ProjectName + " details.";
+}
+
+<a asp-controller="Timesheets" asp-action="Items">All timesheets</a>
+<span class="action-spacer mx-1">|</span>
+<a asp-controller="Timesheets" asp-action="Edit" asp-route-id="@Model.ActiveTimesheet.TimesheetId">Edit this timesheet</a>
+<span class="action-spacer mx-1">|</span>
+<a asp-controller="Timesheets" asp-action="Add">Add new timesheet</a>
+
+<form asp-controller="Timesheets" asp-action="Details" asp-route-id="@Model.ActiveTimesheet.TimesheetId"method="get" enctype="application/x-www-form-urlencoded">
+    <label>Date: </label>
+    <p>@Model.ActiveTimesheet.Date</p>
+    <label>Project Name: </label>
+    <p>@Model.ActiveTimesheet.ProjectName</p>
+    <label>Hours: </label>
+    <p>@Model.ActiveTimesheet.Hours</p>
+</form>
+

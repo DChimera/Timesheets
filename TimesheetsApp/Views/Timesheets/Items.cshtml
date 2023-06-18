@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "All";
+}
+<a asp-controller="Timesheets" asp-action="Add">Add new timesheet</a>
+<div>
+    <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+            <th>Date</th>
+            <th>Project Name</th>
+            <th>Duration (Hours)</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+            @foreach(Timesheet timesheet in Model){
+                <tr>
+                    <td>@timesheet.Date</td>
+                    <td>@timesheet.ProjectName</td>
+                    <td>@timesheet.Hours</td>
+                    <td>
+                        <a asp-controller="Timesheets" asp-action="Details" asp-route-id="@timesheet.TimesheetId">Details</a>
+                        <span class="action-spacer mx-1">|</span>
+                        <a asp-controller="Timesheets" asp-action="Edit" asp-route-id="@timesheet.TimesheetId">Edit</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
